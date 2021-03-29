@@ -1,0 +1,1302 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 47,
+    "links": [],
+    "panels": [
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "percentunit"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "%",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "sonnen_batterie_autarkie_monatlich"
+              }
+            ]
+          }
+        ],
+        "title": "Autarkie",
+        "type": "stat"
+      },
+      {
+        "aliasColors": {},
+        "bars": true,
+        "dashLength": 10,
+        "dashes": false,
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {},
+          "overrides": []
+        },
+        "fill": 1,
+        "fillGradient": 0,
+        "gridPos": {
+          "h": 18,
+          "w": 20,
+          "x": 4,
+          "y": 0
+        },
+        "hiddenSeries": false,
+        "id": 11,
+        "legend": {
+          "avg": false,
+          "current": false,
+          "max": false,
+          "min": false,
+          "show": true,
+          "total": false,
+          "values": false
+        },
+        "lines": false,
+        "linewidth": 1,
+        "nullPointMode": "null",
+        "options": {
+          "alertThreshold": false
+        },
+        "percentage": false,
+        "pluginVersion": "7.5.1",
+        "pointradius": 2,
+        "points": false,
+        "renderer": "flot",
+        "seriesOverrides": [
+          {
+            "$$hashKey": "object:219",
+            "alias": "Produktion",
+            "color": "#E0B400"
+          },
+          {
+            "$$hashKey": "object:386",
+            "alias": "Verbrauch",
+            "color": "#1F60C4"
+          },
+          {
+            "$$hashKey": "object:2147",
+            "alias": "Netzbezug",
+            "color": "#C4162A"
+          },
+          {
+            "$$hashKey": "object:722",
+            "alias": "Einspeisung",
+            "color": "#C8F2C2"
+          },
+          {
+            "$$hashKey": "object:410",
+            "alias": "Durchschnittliche Ladung",
+            "bars": false,
+            "lines": true,
+            "points": true,
+            "stack": false,
+            "yaxis": 2
+          },
+          {
+            "$$hashKey": "object:472",
+            "alias": "Durchschnittliche Entladung",
+            "bars": false,
+            "lines": true,
+            "points": true,
+            "stack": false,
+            "yaxis": 2
+          }
+        ],
+        "spaceLength": 10,
+        "stack": true,
+        "steppedLine": false,
+        "targets": [
+          {
+            "alias": "Produktion",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "max"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "pv_produktion_taeglich"
+              }
+            ]
+          },
+          {
+            "alias": "Verbrauch",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "B",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "energieverbrauch_taeglich"
+              }
+            ]
+          },
+          {
+            "alias": "Netzbezug",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "C",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "max"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "netzbezug_taeglich"
+              }
+            ]
+          },
+          {
+            "alias": "Einspeisung",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "D",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "max"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "pv_einspeisung_taeglich"
+              }
+            ]
+          },
+          {
+            "alias": "Durchschnittliche Ladung",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "%",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "query": "SELECT median(\"max\") FROM (SELECT max(\"value\") as \"max\" FROM \"autogen\".\"%\" WHERE (\"entity_id\" = 'sonnen_batterie_ladestand_user') AND $timeFilter GROUP BY time(1d) fill(null)) WHERE $timeFilter GROUP BY time(30d) fill(null)",
+            "rawQuery": true,
+            "refId": "E",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "max"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "sonnen_batterie_ladestand_user"
+              }
+            ]
+          },
+          {
+            "alias": "Durchschnittliche Entladung",
+            "groupBy": [
+              {
+                "params": [
+                  "30d"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "%",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "query": "SELECT median(\"min\") FROM (SELECT min(\"value\") as \"min\" FROM \"autogen\".\"%\" WHERE (\"entity_id\" = 'sonnen_batterie_ladestand_user') AND $timeFilter GROUP BY time(1d) fill(null)) WHERE $timeFilter GROUP BY time(30d) fill(null)",
+            "rawQuery": true,
+            "refId": "F",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "sum"
+                },
+                {
+                  "params": [
+                    " / 30"
+                  ],
+                  "type": "math"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "sonnen_batterie_ladestand_user"
+              }
+            ]
+          }
+        ],
+        "thresholds": [],
+        "timeFrom": null,
+        "timeRegions": [],
+        "timeShift": null,
+        "title": "Monatsübersicht",
+        "tooltip": {
+          "shared": true,
+          "sort": 0,
+          "value_type": "individual"
+        },
+        "type": "graph",
+        "xaxis": {
+          "buckets": null,
+          "mode": "time",
+          "name": null,
+          "show": true,
+          "values": []
+        },
+        "yaxes": [
+          {
+            "$$hashKey": "object:82",
+            "decimals": 1,
+            "format": "kwatth",
+            "label": null,
+            "logBase": 1,
+            "max": null,
+            "min": "0",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:83",
+            "decimals": 1,
+            "format": "percent",
+            "label": null,
+            "logBase": 1,
+            "max": "105",
+            "min": "0",
+            "show": true
+          }
+        ],
+        "yaxis": {
+          "align": false,
+          "alignLevel": null
+        }
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-yellow",
+              "mode": "fixed"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 2
+        },
+        "hideTimeOverride": true,
+        "id": 6,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "hide": false,
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "pv_produktion_monatlich"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "title": "Produktion",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-blue",
+              "mode": "fixed"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 4
+        },
+        "hideTimeOverride": true,
+        "id": 7,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "energieverbrauch_monatlich"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "title": "Verbrauch",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "super-light-green",
+              "mode": "fixed"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 6
+        },
+        "hideTimeOverride": true,
+        "id": 9,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "pv_einspeisung_monatlich"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "title": "Einspeisung",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "super-light-green",
+              "mode": "fixed"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "currencyEUR"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 8
+        },
+        "hideTimeOverride": true,
+        "id": 17,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "previous"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                },
+                {
+                  "params": [
+                    "* 0.0987"
+                  ],
+                  "type": "math"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "pv_einspeisung_monatlich"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "title": "Einspeise-Vergütung",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "dark-red",
+              "mode": "fixed"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "kwatth"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 10
+        },
+        "hideTimeOverride": true,
+        "id": 8,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "null"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "kWh",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "netzbezug_monatlich"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "title": "Netzbezug",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 12
+        },
+        "id": 15,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "none"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "state",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "sonnen_batterie_lade_zyklen"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Ladezyklen",
+        "type": "stat"
+      },
+      {
+        "datasource": "InfluxDB",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 14
+        },
+        "id": 16,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {
+            "valueSize": 30
+          },
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "groupBy": [
+              {
+                "params": [
+                  "$__interval"
+                ],
+                "type": "time"
+              },
+              {
+                "params": [
+                  "none"
+                ],
+                "type": "fill"
+              }
+            ],
+            "measurement": "%",
+            "orderByTime": "ASC",
+            "policy": "autogen",
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "field"
+                },
+                {
+                  "params": [],
+                  "type": "mean"
+                }
+              ]
+            ],
+            "tags": [
+              {
+                "key": "entity_id",
+                "operator": "=",
+                "value": "sonnen_batterie_health"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Batterie-Status",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 2,
+          "w": 4,
+          "x": 0,
+          "y": 16
+        },
+        "id": 19,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/^state$/",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "7.5.1",
+        "targets": [
+          {
+            "format": "table",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT\n  state,\n  last_changed AS TIME\nFROM states\nWHERE\n  entity_id='sensor.sonnen_batterie_sw_version'\nORDER BY 2",
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "event_id"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "table": "states",
+            "timeColumn": "created",
+            "timeColumnType": "timestamptz",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "SW-Version",
+        "type": "stat"
+      }
+    ],
+    "refresh": "10s",
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now/y",
+      "to": "now/y"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Jahresansicht",
+    "uid": "pWo_WklMz",
+    "version": 14
+  }
